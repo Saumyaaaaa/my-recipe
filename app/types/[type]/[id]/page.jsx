@@ -13,7 +13,7 @@ const getRecipeDetails= async (id)=>{
 
 const page = async ({ params }) => {
   const recipeDetails = await getRecipeDetails(params.id);
-  const details = recipeDetails.meals[0];
+  const details = recipeDetails &&recipeDetails.meals ? recipeDetails.meals[0] :{};
   const ingredients = Object.keys(details)
     .filter((key) => key.indexOf("Ingredient") > 0)
     .map((ingKey) => details[ingKey])
