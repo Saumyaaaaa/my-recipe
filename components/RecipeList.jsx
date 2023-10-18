@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const RecipeList = ({recipes,type}) => {
   return (
-    <div className='grid grid-cols-1 gap-5 p-5 sm::grid-cols-3 md:grid-cols-3 lg:grid-cols-4'>
+    <div className='grid grid-cols-1 gap-5 p-5 sm::grid-cols-3 md:grid-cols-3 lg:grid-cols-3'>
      {recipes.map((recipe,idx) => {
         return(
             <div  className="rounded overflow-hidden bg-slate-300 "key={idx}>
@@ -15,12 +15,11 @@ const RecipeList = ({recipes,type}) => {
                 height={500}
                 src={recipe.strMealThumb }
                 />
-                <div className='p-5'>
+                <div className='p-5 h-full flex flex-col   '>
                     
-                    
-                    <h2 className='text-2xl font-bold'>{recipe.strMeal}</h2>
-                    <Link  className="text-white bg-red-700 rounded py-1 px-3  block mt-5 text-center hover:bg-red-600"href={`/types/${type}/${recipe.idMeal}`}>
-                    Recipe Details
+                    <h2 className='text-2xl font-bold '>{recipe.strMeal}</h2>
+                    <Link  className="text-white  bg-red-700 rounded py-1 px-3  block mt-5 text-center hover:bg-red-600 "href={`/types/${type}/${recipe.idMeal}`}>
+                    <p className="text-center ">Recipe Details</p>
                     </Link>
                 </div>
 
