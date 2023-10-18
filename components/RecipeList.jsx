@@ -1,7 +1,6 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const RecipeList = ({recipes,type}) => {
   return (
@@ -30,4 +29,4 @@ const RecipeList = ({recipes,type}) => {
   )
 }
 
-export default RecipeList
+export default RecipeList;
