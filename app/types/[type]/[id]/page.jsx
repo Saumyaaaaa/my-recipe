@@ -16,31 +16,30 @@ const page = async ({ params }) => {
 		.filter((key) => key.indexOf("Ingredient") > 0)
 		.map((ingKey) => details[ingKey])
 		.filter(Boolean);
-	console.log(details);
+	// console.log(details);
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2">
-			<div>
+		<div className="grid  grid-cols-1 md:grid-cols-2">
+			<div className="border-r-2  flex justify-center items-center p-5">
 				<Image
 					src={details.strMealThumb}
-					width={500}
-					height={500}
+					width={300}
+					height={300}
 					alt="Recipe Image"
-					className="w-full"
+					className="h-full w-full  object-contain rounded-lg"
 				/>
 			</div>
 			<div className="p-5">
 				<h1>
-					Recipe Name:{" "}
-					<span className="font-bold text-2xl">
+					<span className="font-medium text-2xl">
 						{details.strMeal}
 					</span>
 				</h1>
 				<div className="tags mt-3">
-					<p>Ingredients List :</p>
+					<h1 className="text-xl font-medium">Ingredients List :</h1>
 					{ingredients.map((ing, idx) => (
 						<span
-							className="bg-red-700 text-white px-0 py-1 rounded inline-block mr-2 mb-2 "
+							className="bg-red-600 text-white px-1 py-1 rounded inline-block mt-3 mr-2 mb-2 "
 							key={idx}
 						>
 							{ing}
@@ -49,7 +48,7 @@ const page = async ({ params }) => {
 				</div>
 				{details.strYoutube && (
 					<div className="mt-3">
-						<p>Video Link :</p>
+						<h1 className="text-xl font-medium">Video Link :</h1>
 						<a
 							target="_blank"
 							rel="noreferrer"
@@ -60,6 +59,12 @@ const page = async ({ params }) => {
 						</a>
 					</div>
 				)}
+				<div className="h-fit mt-3 ">
+					<h1 className="text-xl font-medium">Instructions :</h1>
+					<div className="border-t-2 mt-3 p-2 text-justify font-medium">
+						<p>{details.strInstructions}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
