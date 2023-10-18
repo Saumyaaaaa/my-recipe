@@ -15,10 +15,11 @@ const page = async ({ params }) => {
   const recipeDetails = await getRecipeDetails(params.id);
   const details = recipeDetails.meals[0];
   const ingredients = Object.keys(details)
-    .filter((key) => key.indexOf("Ingredients") > 0)
+    .filter((key) => key.indexOf("Ingredient") > 0)
     .map((ingKey) => details[ingKey])
     .filter(Boolean);
-
+    console.log(details)
+   
   return (
     <div className='grid grid-cols-1 md:grid-cols-2'>
       <div>
@@ -39,11 +40,25 @@ const page = async ({ params }) => {
           <p>
             Ingredients List :
           </p>
-          {ingredients.map((ing,idx) => (
-          <span key={idx}>{ing}</span>
+         {ingredients.map((ing,idx)=>
+         (<span className='bg-red-700 text-white px-0 py-1 rounded inline-block mr-2 mb-2 ' key={idx}>
+          {ing}
+          </span>
           ))}
+        </div>
+        {details.strYoutube && (
+          <div className='mt-3'>
+          <p>Video Link :</p>
+          <a 
+          target='_blank'
+          rel='noreferrer'
+          className='text-red-700 '
+          href={details.strYoutube}>How to make {details.strMeal}
+          </a>
 
         </div>
+        ) } 
+        
       </div>
     </div>
   );
